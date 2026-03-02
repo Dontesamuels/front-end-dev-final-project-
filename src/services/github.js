@@ -1,22 +1,15 @@
+// src/services/github.js
 
-export async function searchRepositories(query = "react project") {
-  const encodedQuery = encodeURIComponent(query);
+export async function searchRepos(query = "react beginner project") {
+  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(
+    query
+  )}&sort=stars&order=desc&per_page=8`;
 
-  const url = `https://api.github.com/search/repositories?q=${encodedQuery}&sort=stars&order=desc&per_page=8`;
-
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`GitHub API Error: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    // Return just the items array
-    return data.items || [];
-  } catch (error) {
-    console.error("GitHub fetch failed:", error);
-    throw error;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`GitHub API Error: ${res.status}`);
   }
+
+  const data = await res.json();
+  return data.items || [];
 }
