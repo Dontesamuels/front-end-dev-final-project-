@@ -80,3 +80,14 @@ textarea { min-height: 120px; resize: vertical; }
   .grid { grid-template-columns: 1fr 1fr; }
   .dashboard { grid-template-columns: 2fr 1fr; align-items: start; }
 }
+
+.link {
+  color: #e8eefc;
+  text-decoration: underline;
+}
+
+.nav-user {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.2rem;
+}
